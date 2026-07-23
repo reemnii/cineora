@@ -58,7 +58,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="relative z-50 bg-black py-4 lg:pb-0 lg:pt-8">
+    <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/85 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.55)] backdrop-blur-xl lg:pb-4 lg:pt-8">
       <Container className="flex items-center justify-between">
         <Link
           href="/"
@@ -92,7 +92,7 @@ export default function Navbar() {
               href={href}
               className={`relative pb-3 transition hover:text-cyan-400 ${
                 isActive
-                  ? "font-bold text-white after:absolute after:bottom-0 after:left-1/2 after:h-1 after:w-11 after:-translate-x-1/2 after:rounded-full after:bg-cyan-400 hover:text-white"
+                  ? "font-bold text-white after:absolute after:bottom-0 after:left-1/2 after:h-1 after:w-1/2 after:-translate-x-1/2 after:rounded-full after:bg-cyan-400 hover:text-white"
                   : ""
               }`}
             >
@@ -151,7 +151,7 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className={`w-full border-b border-white/10 pb-3 transition hover:text-cyan-400 ${
                   isActive
-                    ? "relative font-bold text-white after:absolute after:bottom-1 after:left-0 after:h-1 after:w-11 after:rounded-full after:bg-cyan-400 hover:text-white"
+                    ? "relative font-bold text-white after:absolute after:bottom-1 after:left-0 after:h-1 after:w-8 after:rounded-full after:bg-cyan-400 hover:text-white"
                     : ""
                 }`}
               >
