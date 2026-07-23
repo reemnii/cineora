@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Container from "@/Components/Container";
 
-const navItems = ["home", "movies", "collections", "new releases", "contact"];
+const navItems = [
+  { label: "about us", href: "/about-us" },
+  { label: "movies", href: "/#movies" },
+  { label: "collections", href: "/#movies" },
+  { label: "new releases", href: "/#movies" },
+  { label: "contact", href: "/#contact" },
+];
 
 function LanguageSwitch({ language, onSwitch, className = "" }) {
   return (
@@ -39,6 +46,7 @@ function LanguageSwitch({ language, onSwitch, className = "" }) {
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [language, setLanguage] = useState("DE");
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -70,19 +78,24 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-8 text-sm text-white lg:flex">
-          {navItems.map((item) => (
-            <a
-              key={item}
-              href="#"
+          {navItems.map(({ label, href }) => {
+            const isActive =
+              (pathname === "/about-us" && label === "about us") ||
+              (pathname === "/" && label === "movies");
+
+            return (
+            <Link
+              key={label}
+              href={href}
               className={`relative pb-3 transition hover:text-cyan-400 ${
-                item === "movies"
+                isActive
                   ? "font-bold text-white after:absolute after:bottom-0 after:left-1/2 after:h-1 after:w-11 after:-translate-x-1/2 after:rounded-full after:bg-cyan-400 hover:text-white"
                   : ""
               }`}
             >
-              {item}
-            </a>
-          ))}
+              {label}
+            </Link>
+          )})}
           <LanguageSwitch
             language={language}
             onSwitch={switchLanguage}
@@ -122,20 +135,25 @@ export default function Navbar() {
           className="absolute left-0 right-0 top-full border-t border-white/10 bg-black px-5 pb-7 pt-5 shadow-2xl shadow-black/70 lg:hidden"
         >
           <div className="flex flex-col items-start gap-4 text-base text-white">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href="#"
+            {navItems.map(({ label, href }) => {
+              const isActive =
+                (pathname === "/about-us" && label === "about us") ||
+                (pathname === "/" && label === "movies");
+
+              return (
+              <Link
+                key={label}
+                href={href}
                 onClick={() => setMenuOpen(false)}
                 className={`w-full border-b border-white/10 pb-3 transition hover:text-cyan-400 ${
-                  item === "movies"
+                  isActive
                     ? "relative font-bold text-white after:absolute after:bottom-1 after:left-0 after:h-1 after:w-11 after:rounded-full after:bg-cyan-400 hover:text-white"
                     : ""
                 }`}
               >
-                {item}
-              </a>
-            ))}
+                {label}
+              </Link>
+            )})}
             <LanguageSwitch
               language={language}
               onSwitch={switchLanguage}

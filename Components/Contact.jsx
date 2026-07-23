@@ -35,7 +35,7 @@ const contactDots = [
 
 export default function Contact() {
   return (
-    <section className="relative w-full bg-black py-20 sm:py-28 overflow-hidden">
+    <section id="contact" className="relative w-full bg-black py-20 sm:py-28 overflow-hidden">
       <Container>
       {/* top accent line */}
       <div className="mx-auto mb-7 flex h-[3px] items-center justify-center gap-2 sm:mb-8">

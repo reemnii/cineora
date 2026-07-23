@@ -72,7 +72,7 @@ export default function ProjectsGrid() {
   }, []);
 
   return (
-    <section className="w-full bg-black py-16 md:py-20">
+    <section id="movies" className="w-full bg-black py-16 md:py-20">
       <Container>
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between md:mb-12">
           <div className="w-full sm:max-w-md">
